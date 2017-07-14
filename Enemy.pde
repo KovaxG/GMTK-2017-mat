@@ -1,3 +1,5 @@
 public class Enemy extends DynamicBlock {
-  publ
+  public Enemy(float x, float y, float w, float h) {
+    super(x, y, w, h);
+  }
 }

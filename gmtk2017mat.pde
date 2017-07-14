@@ -4,7 +4,7 @@ void setup() {
   size(800, 600);
   frameRate(60);
   
-  player = new Player(200, 100);
+  player = new Player(200, 100, 50, 100);
 }
 
 void draw() {
