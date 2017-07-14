@@ -12,8 +12,8 @@ public class Rect {
   }
 }
 
-public class StaticBlock extends Rect {
-  public StaticBlock(float x, float y, float w, float h) {
+public class DynamicBlock extends Rect {
+  public DynamicBlock(float x, float y, float w, float h) {
     super(x, y, w, h);
   }
 }
