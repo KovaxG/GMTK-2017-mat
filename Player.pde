@@ -1,4 +1,4 @@
-public class Player {
+public class Player extends DynamicBlock {
   public float x;
   public float y;
   
