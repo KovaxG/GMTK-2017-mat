@@ -1,9 +1,10 @@
 public class Level {
   private ArrayList<StaticBlock> staticBlocks;
   private ArrayList<Enemy> enemies;
-  Player player;
-  StaticBlock mouseBlock;
-  Door door;
+  public Player player;
+  public StaticBlock mouseBlock;
+  public Rect ghostBlock;
+  public Door door;
   public Rect dimension;
   
   public Background background;
@@ -26,8 +27,9 @@ public class Level {
     
     if (horizontal) temp = new StaticBlock(x_pos - 50, y_pos - 10, 100, 20);
     else            temp = new StaticBlock(x_pos - 10, y_pos - 50, 20, 100);
-      
     
+    ghostBlock = new Rect(temp.x, temp.y, temp.w, temp.h);
+
     // Collide with static blocks
     for (StaticBlock sb : staticBlocks) 
       if (temp.isCollide(sb)) {
@@ -89,7 +91,8 @@ public class Level {
     for (StaticBlock block : staticBlocks) block.draw();
     
     
-    if (mouseBlock != null) mouseBlock.draw();
+    if      (mouseBlock != null) mouseBlock.draw();
+    else if (ghostBlock != null) ghostBlock.draw();
   }
   
 }

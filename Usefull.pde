@@ -24,8 +24,11 @@ public class Rect {
   }
   
   public void draw() {
-    fill(0, 0, 255);
+    stroke(255, 0, 0);
+    fill(255, 0, 0);
     rect(x, y, w, h);
+    stroke(0);
+    fill(255);
   }
 }
 

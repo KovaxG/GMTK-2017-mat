@@ -27,10 +27,10 @@ Level loadLevel(int levelNr) {
       
       StaticBlock floor   = new StaticBlock(40, 560, 700, 20);
       StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
-      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280);
+      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280); //<>//
       StaticBlock rwall   = new StaticBlock(740, 300, 20, 280); //<>//
 
-      level_0.addStaticBlock(floor);
+      level_0.addStaticBlock(floor); //<>//
       level_0.addStaticBlock(ceiling); //<>//
       level_0.addStaticBlock(lwall);
       level_0.addStaticBlock(rwall);
@@ -73,10 +73,10 @@ Level loadLevel(int levelNr) {
         }
       }); 
       
-      StaticBlock floor1 = new StaticBlock(40, 560, 400, 20);
+      StaticBlock floor1 = new StaticBlock(40, 560, 400, 20); //<>//
       StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
       StaticBlock ceiling = new StaticBlock(40, 300, 1220, 20);
-      StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
+      StaticBlock lwall = new StaticBlock(40, 300, 20, 280); //<>//
       StaticBlock rwall = new StaticBlock(1260, 300, 20, 280); //<>//
       
       level.addStaticBlock(floor1);
@@ -121,7 +121,7 @@ Level loadLevel(int levelNr) {
     case 4: {
     Level level = new Level(100, 400, 600, 40, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
-          textSize(20);
+          textSize(20); //<>//
           text("Mathewializer: Level 4", 300, 200); //<>//
           text("You will need good relfexes for this one",300,400);
         }
@@ -152,7 +152,7 @@ Level loadLevel(int levelNr) {
       
       return level;
     }
-    default: return null;
+    default: return null; //<>//
   } //<>// //<>//
 }
 
@@ -160,6 +160,8 @@ void setup() {
   
   size(800, 600);
   minim = new Minim(this);
+  noCursor();
+
 
   frameRate(60);
 
@@ -183,6 +185,11 @@ void draw() {
    translate(-x_offset, y_offset);
   
    currentLevel.draw();
+   
+   translate(x_offset, -y_offset);
+   
+   fill(255);
+   rect(mouseX, mouseY, 5, 5);
 }
 
 void mousePressed() {
@@ -203,6 +210,8 @@ void mouseReleased() {
     if (mouseButton == LEFT  && aw > ah) currentLevel.mouseBlock = null;
     if (mouseButton == RIGHT && aw < ah) currentLevel.mouseBlock = null;
   }
+  
+  currentLevel.ghostBlock = null;
 }
 
 int direction = 0;
