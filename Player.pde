@@ -17,7 +17,7 @@ public class Player extends DynamicBlock {
     checkDie();
     boolean isCollision =false;
     for (StaticBlock block:level.staticBlocks){
-      if (block.isCollide(player)){
+      if (block.isCollide(this)){
         isCollision=true;
       }
       if (isCollision){
@@ -42,7 +42,7 @@ public class Player extends DynamicBlock {
   
   public boolean isDie(){
     for (Enemy enemy:level.getEnemies()){
-      if (enemy.isCollide(player)){
+      if (enemy.isCollide(this)){
         return true;
       }
     }

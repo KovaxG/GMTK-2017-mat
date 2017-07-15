@@ -1,11 +1,10 @@
 public class Enemy extends DynamicBlock {
   
   public float speed = 5; // The horizontal speed of the enemy
-  private Level level;
+  public Level level;
   
-  public Enemy(float x, float y,Level level) {
+  public Enemy(float x, float y) {
     super(x, y, 50, 100);
-    this.level=level;
   }
   
   public void update() {
@@ -15,8 +14,6 @@ public class Enemy extends DynamicBlock {
     // Gravity
     y += 1;
   }
-  
-
   
   public void draw() {
     fill(255, 0, 0);
