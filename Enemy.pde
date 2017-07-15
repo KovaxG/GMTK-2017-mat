@@ -13,7 +13,14 @@ public class Enemy extends DynamicBlock {
     
     // Gravity
     y += 1;
+    
+    // Gravitational Collision
     boolean isCollision=false;
+    if (level.mouseBlock != null) {
+      if (this.isCollide(level.mouseBlock)) {
+        isCollision = true;
+      }
+    }
     for (Rect rect:level.getStaticBlocks()){
       if (this.isCollide(rect)){
         isCollision = true;

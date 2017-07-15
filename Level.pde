@@ -2,6 +2,7 @@ public class Level {
   private ArrayList<StaticBlock> staticBlocks;
   private ArrayList<Enemy> enemies;
   Player player;
+  StaticBlock mouseBlock;
   
   public Level(){
     staticBlocks = new ArrayList<StaticBlock>();
@@ -49,6 +50,8 @@ public class Level {
     player.draw();
     for (Enemy enemy : enemies) enemy.draw();
     for (StaticBlock block : staticBlocks) block.draw();
+    
+    if (mouseBlock != null) mouseBlock.draw();
   }
   
 }

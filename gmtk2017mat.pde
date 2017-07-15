@@ -18,7 +18,7 @@ void setup() {
   
   
   enemy = new Enemy(400, 250);
-  level.addEnemy(enemy);
+  level.addEnemy(enemy); //<>//
 }
  //<>//
 void draw() {
@@ -32,7 +32,17 @@ void draw() {
 }
 
 void mousePressed() {
+  if (mouseButton == LEFT) {
+    level.mouseBlock = new StaticBlock(mouseX, mouseY, 100, 20);
+  }
   
+  if (mouseButton == RIGHT) {
+    level.mouseBlock = new StaticBlock(mouseX, mouseY, 20, 100);
+  }
+}
+
+void mouseReleased() {
+  level.mouseBlock = null;
 }
 
 void keyPressed() {
