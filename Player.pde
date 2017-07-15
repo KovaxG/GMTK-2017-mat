@@ -77,7 +77,9 @@ public class Player extends DynamicBlock {
   }
   
   public void checkDie(){
-  if (isDynamicCollision())
+  //System.out.println(this.y);
+  //System.out.println(-level.dimension.y+level.dimension.h);
+  if (isDynamicCollision() || (this.y>-level.dimension.y+level.dimension.h))
     {
       currentLevel = loadLevel(levelNr);
     }
