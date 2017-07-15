@@ -22,7 +22,9 @@ public class Rect {
         return false;
     return true;
   }
+  
 }
+
 
 public class DynamicBlock extends Rect {
   Level level;
@@ -62,6 +64,8 @@ public class DynamicBlock extends Rect {
     }
     return isCollision;
   }
+  
+
   
   
 }
