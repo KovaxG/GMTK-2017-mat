@@ -29,3 +29,9 @@ public class DynamicBlock extends Rect {
     super(x, y, w, h);
   }
 }
+
+float sgn(float x) {
+  if (x > 0) return 1;
+  else if (x < 0) return -1;
+  else return 0;
+}
