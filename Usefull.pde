@@ -10,6 +10,18 @@ public class Rect {
     this.w = w;
     this.h = h;
   }
+  
+  public boolean isCollide(Rect rect){
+    if (rect.y >=this.y + this.h)
+        return false;
+    if (rect.x >= this.x + this.w)
+        return false;
+    if (rect.y + rect.h <= this.y)
+        return false;
+    if (rect.x + rect.w <=this.x)
+        return false;
+    return true;
+  }
 }
 
 public class DynamicBlock extends Rect {

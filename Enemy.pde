@@ -16,7 +16,7 @@ public class Enemy extends DynamicBlock {
     y += 1;
   }
   
-  public void collide(
+
   
   public void draw() {
     fill(255, 0, 0);

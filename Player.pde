@@ -14,14 +14,15 @@ public class Player extends DynamicBlock {
     
     // Gravity
     y += 1;
-    
-    if (isDie())
-    {
-      ///TODO implement die
-    }
-    
-    if (!Level.isCollide()){
-        switch(direction)
+    checkDie();
+    boolean isCollision =false;
+    for (StaticBlock block:level.staticBlocks){
+      if (block.isCollide(player)){
+        isCollision=true;
+      }
+      if (isCollision){
+        y-= 1;   
+      }
     }
     
   }
@@ -31,9 +32,17 @@ public class Player extends DynamicBlock {
     rect(x, y, w, h);
   }
   
-    public void isDie(){
-    for (Enemy enemy:enemies){
-      if (enemy.collide(player)){
+  public void checkDie(){
+  if (isDie())
+    {
+      System.out.println("You died");
+      ///TODO implement die
+    }
+  }
+  
+  public boolean isDie(){
+    for (Enemy enemy:level.getEnemies()){
+      if (enemy.isCollide(player)){
         return true;
       }
     }
