@@ -12,6 +12,7 @@ public class Level {
   
   public void addEnemy(Enemy enemy){
     enemies.add(enemy);
+    enemy.level = this;
   }
   
   public void setPlayer(Player player){
@@ -44,6 +45,10 @@ public class Level {
    }
   }
   
-
+  public void draw() {
+    player.draw();
+    for (Enemy enemy : enemies) enemy.draw();
+    for (StaticBlock block : staticBlocks) block.draw();
+  }
   
 }

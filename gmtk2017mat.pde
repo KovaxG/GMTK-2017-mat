@@ -1,4 +1,3 @@
-Player player;
 Enemy enemy;
 StaticBlock floor;
 
@@ -11,10 +10,9 @@ void setup() {
   frameRate(60); //<>//
   
   level=new Level();
-  player = new Player(200, 100, level);
-  enemy = new Enemy(400, 100, level);
+  enemy = new Enemy(400, 100);
   floor = new StaticBlock(0, 500, 800, 20);
-  level.setPlayer(player);
+ 
   level.addEnemy(enemy);
   level.addStaticBlock(floor);
 }
@@ -26,11 +24,13 @@ void draw() {
   
    translate(0.0, 0.0);
   
-   player.draw();
-   enemy.draw();
-   floor.draw();  
+   level.draw();
 }
 
 void mousePressed() {
   
+}
+
+void keyPressed() {
+
 }
