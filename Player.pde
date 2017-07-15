@@ -6,16 +6,6 @@ public class Player extends DynamicBlock {
   private float yacc = 0;
   boolean isJumping=false;
   
-  boolean faceRight = true;
-  boolean moving = false;
-  int frame = 0;
-  
-  PImage frame1;
-  PImage frame2;
-  
-  PImage thisFrame;
-  
-  
   public Player(float x, float y, Level level) {
     super(x, y, 80, 150,level);
     this.level = level;
@@ -31,9 +21,7 @@ public class Player extends DynamicBlock {
   
   public void update(int direction, boolean jump) {
     // Input
-    moving = direction !=  0;
-    if      (direction ==  1) faceRight = true;
-    else if (direction == -1) faceRight = false;
+    updateAnimation(direction);
     x += speed * direction;
     
     checkDie();
@@ -78,43 +66,14 @@ public class Player extends DynamicBlock {
     if (!jump){
       yacc=0;
     }
-    checkDie();
-    
-    
-  
-    
+    checkDie();  
   }
   
   public void draw() {
     strokeWeight(1);
     stroke(0);
     fill(0, 100, 0);
-    //rect(x, y, w, h);
-    
-    if (moving) {
-      frame = frame + 1;
-      if (frame == 10) {
-        frame = 0;
-        
-        if (thisFrame.equals(frame1)) thisFrame = frame2;
-        else                          thisFrame = frame1;
-      }
-    }
-    else {
-      thisFrame = frame1;
-    }
-    
-    if (faceRight) {
-      image(thisFrame, x, y);
-    }
-    else {
-      scale(-1, 1);
-      image(thisFrame, -x - w, y);
-      scale(-1, 1);
-    }
-    
-
-    //image(frame2, x, y);
+    drawAnimation();
   }
   
   public void checkDie(){
