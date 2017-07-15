@@ -8,19 +8,19 @@ Level  level;
 void setup() {
   size(800, 600);
   frameRate(60); //<>//
-   //<>//
+   //<>// //<>//
   level=new Level();
-  enemy = new Enemy(400, 100);
+  enemy = new Enemy(400, 100,level);
   floor = new StaticBlock(0, 500, 800, 20);
  
   level.addEnemy(enemy);
   level.addStaticBlock(floor);
   
   
-  enemy = new Enemy(400, 250);
+  enemy = new Enemy(400, 250,level);
   level.addEnemy(enemy); //<>//
 }
- //<>//
+ //<>// //<>//
 void draw() {
   background(0); //<>//
   

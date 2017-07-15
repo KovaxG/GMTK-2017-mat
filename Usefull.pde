@@ -25,7 +25,58 @@ public class Rect {
 }
 
 public class DynamicBlock extends Rect {
-  public DynamicBlock(float x, float y, float w, float h) {
+  Level level;
+  public DynamicBlock(float x, float y, float w, float h, Level level) {
     super(x, y, w, h);
+    this.level = level;
   }
+  
+  public boolean isAnyCollision(){
+    boolean isCollision=false;
+    if (level.mouseBlock != null) {
+      if (this.isCollide(level.mouseBlock)) {
+        isCollision = true;
+      }
+    }
+    for (Rect rect:level.getStaticBlocks()){
+      if (this.isCollide(rect)){
+        isCollision = true;
+      }
+    }
+    for (Enemy enemy:level.getEnemies()){
+      if (this.isCollide(enemy) && !this.equals(enemy)){
+        isCollision = true;
+      }
+    }
+    return isCollision;
+  
+  }
+  
+  public boolean isStaticCollision(){
+    boolean isCollision=false;
+    if (level.mouseBlock != null) {
+      if (this.isCollide(level.mouseBlock)) {
+        isCollision = true;
+      }
+    }
+    for (Rect rect:level.getStaticBlocks()){
+      if (this.isCollide(rect)){
+        isCollision = true;
+      }
+    }
+    return isCollision;
+    
+  }
+  
+  public boolean isDynamicCollision(){
+    boolean isCollision=false;
+    for (DynamicBlock dblock:level.getEnemies()){
+      if (this.isCollide(dblock) && !this.equals(dblock)){
+        isCollision = true;
+      }
+    }
+    return isCollision;
+  }
+  
+  
 }
