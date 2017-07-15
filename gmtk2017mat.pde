@@ -18,7 +18,7 @@ void setup() {
   level.addStaticBlock(floor);
   
   
-  enemy = new Enemy(400, 250,level);
+  enemy = new Enemy(600, 250,level);
   level.addEnemy(enemy); //<>//
 } //<>//
 
@@ -34,11 +34,11 @@ void draw() {
 
 void mousePressed() {
   if (mouseButton == LEFT && level.mouseBlock == null) {
-    level.mouseBlock = new StaticBlock(mouseX, mouseY, 100, -20);
+    level.mouseBlock = new StaticBlock(mouseX, mouseY, 100, 20);
   }
   
   if (mouseButton == RIGHT && level.mouseBlock == null) {
-    level.mouseBlock = new StaticBlock(mouseX, mouseY, 20, -100);
+    level.mouseBlock = new StaticBlock(mouseX, mouseY, 20, 100);
   }
 }
 

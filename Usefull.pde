@@ -33,23 +33,7 @@ public class DynamicBlock extends Rect {
 
   
   public boolean isAnyCollision(){
-    boolean isCollision=false;
-    if (level.mouseBlock != null) {
-      if (this.isCollide(level.mouseBlock)) {
-        isCollision = true;
-      }
-    }
-    for (Rect rect:level.getStaticBlocks()){
-      if (this.isCollide(rect)){
-        isCollision = true;
-      }
-    }
-    for (Enemy enemy:level.getEnemies()){
-      if (this.isCollide(enemy) && !this.equals(enemy)){
-        isCollision = true;
-      }
-    }
-    return isCollision;
+    return isStaticCollision() || isDynamicCollision();
   
   }
   
