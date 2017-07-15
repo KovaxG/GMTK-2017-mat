@@ -99,5 +99,10 @@ public class Enemy extends DynamicBlock {
     fill(255, 0, 0);
     if (thisFrame == null) rect(x, y, w, h);
     drawAnimation();
+    
+    if (footSense1 != null && footSense2 != null) {
+      footSense1.draw();
+      footSense2.draw();
+    }
   }
 }

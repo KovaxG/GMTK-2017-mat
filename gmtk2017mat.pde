@@ -1,5 +1,12 @@
+import ddf.minim.*;
+
+Minim minim;
+
 Level  currentLevel;
 int levelNr = 0;
+
+import processing.sound.*;
+SoundFile file;
 
 Level loadLevel(int levelNr) {
   switch(levelNr) {
@@ -14,7 +21,7 @@ Level loadLevel(int levelNr) {
       StaticBlock floor   = new StaticBlock(40, 560, 700, 20);
       StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
       StaticBlock lwall   = new StaticBlock(40, 300, 20, 280);
-      StaticBlock rwall   = new StaticBlock(740, 300, 20, 280); //<>//
+      StaticBlock rwall   = new StaticBlock(740, 300, 20, 280); //<>// //<>//
 
       level_0.addStaticBlock(floor);
       level_0.addStaticBlock(ceiling);
@@ -60,7 +67,7 @@ Level loadLevel(int levelNr) {
       }); 
       
       StaticBlock floor1 = new StaticBlock(40, 560, 400, 20);
-      StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
+      StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>// //<>//
       StaticBlock ceiling = new StaticBlock(40, 300, 1220, 20);
       StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
       StaticBlock rwall = new StaticBlock(1260, 300, 20, 280);
@@ -105,7 +112,7 @@ Level loadLevel(int levelNr) {
       return level;
     }
     case 4: {
-    Level level = new Level(100, 400, 600, 40, new Rect(0, 0, 700, 600), new Background() {
+    Level level = new Level(100, 400, 600, 40, new Rect(0, 0, 700, 600), new Background() { //<>//
         public void draw() {
           textSize(20);
           text("Mathewializer: Level 4", 300, 200);
@@ -145,10 +152,14 @@ Level loadLevel(int levelNr) {
 void setup() {
   
   size(800, 600);
+  minim = new Minim(this);
 
   frameRate(60);
 
   currentLevel = loadLevel(levelNr);
+  
+  
+  
 } 
 
 float x_offset = 0;
