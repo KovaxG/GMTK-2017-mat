@@ -6,7 +6,9 @@ public class Level {
   Door door;
   public Rect dimension;
   
-  public Level(float playerX, float playerY, float doorX, float doorY, Rect dimensions){
+  public Background background;
+  
+  public Level(float playerX, float playerY, float doorX, float doorY, Rect dimensions, Background backg){
     staticBlocks = new ArrayList<StaticBlock>();
     enemies =  new ArrayList<Enemy>();
     
@@ -14,6 +16,8 @@ public class Level {
     door = new Door(doorX, doorY);
     
     this.dimension = dimensions;
+    
+    background = backg;
   }
   
   public void createMouseBlock(boolean horizontal, float x_pos, float y_pos) {
@@ -78,6 +82,7 @@ public class Level {
   }
   
   public void draw() {
+    background.draw();
     door.draw();
     player.draw();
     for (Enemy enemy : enemies) enemy.draw();

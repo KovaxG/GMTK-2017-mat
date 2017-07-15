@@ -64,12 +64,7 @@ public class DynamicBlock extends Rect {
     }
     return isCollision;
   }
-  
-
-  
-  
 }
-
 
 float sgn(float x) {
   if (x > 0) return 1;
@@ -81,4 +76,8 @@ float saturate(float x, float min, float max) {
   if (x > max) return max;
   else if (x < min) return min;
   else return x;
+}
+
+public abstract class Background {
+  public abstract void draw();
 }

@@ -1,41 +1,66 @@
+Level  currentLevel;
+int levelNr = 0;
 
-
-Level  level;
-
-Level loadLevels(int levelNr) {
-  Level level_0 = new Level(100, 400, 550, 440, new Rect(0, 0, 700, 600)); 
-  
-  StaticBlock floor = new StaticBlock(40, 560, 700, 20);
-  StaticBlock ceiling = new StaticBlock(40, 300, 400, 20);
-  StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
-  StaticBlock rwall = new StaticBlock(740, 300, 20, 280); //<>//
-  
-  level_0.addStaticBlock(floor);
-  level_0.addStaticBlock(ceiling);
-  level_0.addStaticBlock(lwall);
-  level_0.addStaticBlock(rwall);
-  
-  /*
-   level = level_0;
-  enemy = new Enemy(400, 100,level);
-  floor = new StaticBlock(0, 500, 1200, 20); //<>//
- 
-  level.addEnemy(enemy); //<>//
-  level.addStaticBlock(floor);
-  
-  
-  enemy = new Enemy(600, 250,level);
-  level.addEnemy(enemy); 
-  */
-  return level_0;
+Level loadLevel(int levelNr) {
+  switch(levelNr) {
+    case 0: {
+      Level level_0 = new Level(100, 400, 550, 440, new Rect(0, 0, 700, 600), new Background() {
+        public void draw() {
+          textSize(20);
+          text("Mathewializer: Level 1", 300, 200);
+        }
+      }); 
+      
+      StaticBlock floor = new StaticBlock(40, 560, 700, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
+      StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
+      StaticBlock rwall = new StaticBlock(740, 300, 20, 280); //<>//
+      
+      level_0.addStaticBlock(floor);
+      level_0.addStaticBlock(ceiling);
+      level_0.addStaticBlock(lwall);
+      level_0.addStaticBlock(rwall);
+      
+      return level_0;
+    }
+    case 1: {
+    Level level = new Level(100, 400, 550, 440, new Rect(0, 0, 700, 600), new Background() {
+        public void draw() {
+          textSize(20);
+          text("Mathewializer: Level 2", 300, 200);
+        }
+      }); 
+      
+      StaticBlock floor1 = new StaticBlock(40, 560, 300, 20);
+      StaticBlock floor2 = new StaticBlock(450, 560, 300, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
+      StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
+      StaticBlock rwall = new StaticBlock(740, 300, 20, 280);
+      
+      Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
+      deathBlock.statikus = true;
+      
+      level.addStaticBlock(floor1);
+      level.addStaticBlock(floor2);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall);
+      level.addStaticBlock(rwall);
+      
+      level.addEnemy(deathBlock);
+      
+      return level;
+    }
+    default: return null;
+  } //<>// //<>//
 }
 
 void setup() {
+  
   size(800, 600);
 
   frameRate(60);
 
-  level = loadLevels(0);
+  currentLevel = loadLevel(levelNr);
 } 
 
 float x_offset = 0;
@@ -44,35 +69,33 @@ float y_offset = 0;
 void draw() {
   background(0); 
   
-   level.update(direction, jump);
+   currentLevel.update(direction, jump);
   
-   x_offset = saturate(-level.player.x + width/2, level.dimension.x, level.dimension.x);
-   y_offset = saturate(-level.player.y + height/2, level.dimension.y, level.dimension.h);
-  
-  System.out.println(y_offset);
+   x_offset = saturate(-currentLevel.player.x + width/2, currentLevel.dimension.x, currentLevel.dimension.x);
+   y_offset = saturate(-currentLevel.player.y + height/2, currentLevel.dimension.y, currentLevel.dimension.h);
   
    translate(x_offset, y_offset);
   
-   level.draw();
+   currentLevel.draw();
 }
 
 void mousePressed() {
-  if (mouseButton == LEFT && level.mouseBlock == null) {
-    level.createMouseBlock(true, mouseX - x_offset, mouseY - y_offset);
+  if (mouseButton == LEFT && currentLevel.mouseBlock == null) {
+    currentLevel.createMouseBlock(true, mouseX - x_offset, mouseY - y_offset);
   }
   
-  if (mouseButton == RIGHT && level.mouseBlock == null) {
-    level.createMouseBlock(false, mouseX - x_offset, mouseY - y_offset);
+  if (mouseButton == RIGHT && currentLevel.mouseBlock == null) {
+    currentLevel.createMouseBlock(false, mouseX - x_offset, mouseY - y_offset);
   }
 }
 
 void mouseReleased() {
-  if (level.mouseBlock != null) {
-    float aw = abs(level.mouseBlock.w);
-    float ah = abs(level.mouseBlock.h);
+  if (currentLevel.mouseBlock != null) {
+    float aw = abs(currentLevel.mouseBlock.w);
+    float ah = abs(currentLevel.mouseBlock.h);
     
-    if (mouseButton == LEFT  && aw > ah) level.mouseBlock = null;
-    if (mouseButton == RIGHT && aw < ah) level.mouseBlock = null;
+    if (mouseButton == LEFT  && aw > ah) currentLevel.mouseBlock = null;
+    if (mouseButton == RIGHT && aw < ah) currentLevel.mouseBlock = null;
   }
 }
 
