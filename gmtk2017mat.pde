@@ -1,5 +1,12 @@
+import ddf.minim.*;
+
+Minim minim;
+
 Level  currentLevel;
 int levelNr = 3;
+
+import processing.sound.*;
+SoundFile file;
 
 Level loadLevel(int levelNr) {
   switch(levelNr) {
@@ -111,10 +118,14 @@ Level loadLevel(int levelNr) {
 void setup() {
   
   size(800, 600);
+  minim = new Minim(this);
 
   frameRate(60);
 
   currentLevel = loadLevel(levelNr);
+  
+  
+  
 } 
 
 float x_offset = 0;
