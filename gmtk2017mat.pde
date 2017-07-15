@@ -1,5 +1,5 @@
 Level  currentLevel;
-int levelNr = 4;
+int levelNr = 0;
 
 Level loadLevel(int levelNr) {
   switch(levelNr) {
@@ -33,7 +33,7 @@ Level loadLevel(int levelNr) {
       
       StaticBlock floor1 = new StaticBlock(40, 560, 300, 20);
       StaticBlock floor2 = new StaticBlock(480, 560, 270, 20);
-      StaticBlock ceiling = new StaticBlock(40, 300, 200, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
       StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
       StaticBlock rwall = new StaticBlock(740, 300, 20, 280);
       
