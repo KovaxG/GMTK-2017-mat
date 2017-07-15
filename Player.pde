@@ -29,16 +29,21 @@ public class Player extends DynamicBlock {
     
     y += ySpeed;
     checkDie();
+    if (ySpeed>0 && isStaticCollision()){ 
+      isJumping = false;
+    }
     if (isStaticCollision()){
       y -= ySpeed;
       ySpeed=0;
-      isJumping = false;
     }
     
     if (jump && !isJumping){
        //y -= jumpSpeed;
        yacc = jumpSpeed/20;
        isJumping = true;
+    }
+    if (!jump){
+      yacc=0;
     }
     checkDie();
     
