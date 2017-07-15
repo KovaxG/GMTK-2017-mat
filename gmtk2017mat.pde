@@ -3,7 +3,7 @@ import ddf.minim.*;
 Minim minim;
 
 Level  currentLevel;
-int levelNr = 4;
+int levelNr = 0;
 
 import processing.sound.*;
 SoundFile file;

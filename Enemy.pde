@@ -11,8 +11,8 @@ public class Enemy extends DynamicBlock {
   public Enemy(float x, float y,Level level) {
     super(x, y, 80, 150,level);
     
-    footSense1 = new Rect(x, y + h, 40, 10);
-    footSense2 = new Rect(x, y + h, 40, 10);
+    footSense1 = new Rect(x, y + h, 40, 20);
+    footSense2 = new Rect(x, y + h, 40, 20);
   }
   
   public Enemy(float x, float y, float w, float h, Level level) {
@@ -33,9 +33,9 @@ public class Enemy extends DynamicBlock {
     if (statikus) return;
     
     // Update invisible floor sense
-    footSense1.x = x + 15;
+    footSense1.x = x - 20;
     footSense1.y = y + h;
-    footSense2.x = x + w + 15;
+    footSense2.x = x + w - 20;
     footSense2.y = y + h;
     
     // Check if sense collides
@@ -100,7 +100,7 @@ public class Enemy extends DynamicBlock {
     if (thisFrame == null) rect(x, y, w, h);
     drawAnimation();
     
-    if (footSense1 != null && footSense2 != null) {
+    if (footSense1 != null && footSense2 != null && false) {
       footSense1.draw();
       footSense2.draw();
     }
