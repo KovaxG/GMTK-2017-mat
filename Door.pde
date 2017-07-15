@@ -1,6 +1,6 @@
 public class Door extends Rect {
   public Door(float x, float y) {
-    super(x, y, 60, 120);
+    super(x, y, 80, 120);
   }
   
   public void draw() {

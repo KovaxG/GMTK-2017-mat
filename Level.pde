@@ -4,13 +4,47 @@ public class Level {
   Player player;
   StaticBlock mouseBlock;
   Door door;
+  public Rect dimension;
   
-  public Level(){
+  public Level(float playerX, float playerY, float doorX, float doorY, Rect dimensions){
     staticBlocks = new ArrayList<StaticBlock>();
     enemies =  new ArrayList<Enemy>();
     
-    player = new Player(0,200, this);
-    door = new Door(500, 380);
+    player = new Player(playerX, playerY, this);
+    door = new Door(doorX, doorY);
+    
+    this.dimension = dimensions;
+  }
+  
+  public void createMouseBlock(boolean horizontal, float x_pos, float y_pos) {
+    
+    StaticBlock temp;
+    
+    if (horizontal) temp = new StaticBlock(x_pos - 50, y_pos - 10, 100, 20);
+    else            temp = new StaticBlock(x_pos - 10, y_pos - 50, 20, 100);
+      
+    
+    // Collide with static blocks
+    for (StaticBlock sb : staticBlocks) 
+      if (temp.isCollide(sb)) {
+        mouseBlock = null;
+        return;
+      }
+    
+    // Collide with enemies
+    for (Enemy nme : enemies) 
+      if (temp.isCollide(nme)) {
+        mouseBlock = null;
+        return;
+      }
+    
+    // Collide with player
+    if (temp.isCollide(player)) {
+      mouseBlock = null;
+      return;
+    }
+
+    mouseBlock = temp;
   }
   
   public void addEnemy(Enemy enemy){
@@ -35,11 +69,6 @@ public class Level {
   
     return staticBlocks;
   }
-  
-  public ArrayList<Enemy> getEnemies(){
-     return enemies; 
-  }
-  
   
   public void update(int direction, boolean jump){
     player.update(direction, jump);

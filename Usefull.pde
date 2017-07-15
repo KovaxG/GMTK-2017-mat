@@ -55,7 +55,7 @@ public class DynamicBlock extends Rect {
   
   public boolean isDynamicCollision(){
     boolean isCollision=false;
-    for (DynamicBlock dblock:level.getEnemies()){
+    for (DynamicBlock dblock:level.enemies){
       if (this.isCollide(dblock) && !this.equals(dblock)){
         isCollision = true;
       }
@@ -71,5 +71,10 @@ float sgn(float x) {
   if (x > 0) return 1;
   else if (x < 0) return -1;
   else return 0;
+}
 
+float saturate(float x, float min, float max) {
+  if (x > max) return max;
+  else if (x < min) return min;
+  else return x;
 }

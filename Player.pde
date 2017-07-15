@@ -57,7 +57,7 @@ public class Player extends DynamicBlock {
   public void checkDie(){
   if (isDynamicCollision())
     {
-      System.out.println("You died");
+      //System.out.println("You died");
       ///TODO implement die
     }
   }

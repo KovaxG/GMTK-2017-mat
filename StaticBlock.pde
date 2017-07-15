@@ -9,6 +9,4 @@ public class StaticBlock extends Rect {
     fill(255);
     rect(x, y, w, h);
   }
-  
-
 }

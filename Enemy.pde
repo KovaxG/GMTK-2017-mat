@@ -37,8 +37,6 @@ public class Enemy extends DynamicBlock {
     
   }
   
-
-  
   public void draw() {
     strokeWeight(1);
     stroke(0);
