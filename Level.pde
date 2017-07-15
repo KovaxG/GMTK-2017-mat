@@ -34,6 +34,8 @@ public class Level {
     for (StaticBlock sb : staticBlocks) 
       if (temp.isCollide(sb)) {
         mouseBlock = null;
+        whoops.rewind();
+        whoops.play();
         return;
       }
     
@@ -41,12 +43,16 @@ public class Level {
     for (Enemy nme : enemies) 
       if (temp.isCollide(nme)) {
         mouseBlock = null;
+        whoops.rewind();
+        whoops.play();
         return;
       }
     
     // Collide with player
     if (temp.isCollide(player)) {
       mouseBlock = null;
+        whoops.rewind();
+        whoops.play();
       return;
     }
 

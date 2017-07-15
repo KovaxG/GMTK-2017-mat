@@ -2,9 +2,11 @@ import ddf.minim.*;
 import java.util.Random;
 
 Minim minim;
-
-Level  currentLevel;
-int levelNr = 3;
+  AudioSnippet ded;
+  AudioSnippet whoops;
+  
+Level  currentLevel; //<>//
+int levelNr = 3; //<>//
  //<>//
  //<>//
  
@@ -17,7 +19,7 @@ Level loadLevel(int levelNr) {
   
   
   switch(levelNr) {
-    case 0: {
+    case 0: { //<>//
       Level level_0 = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() { //<>//
           textSize(20);
@@ -26,10 +28,10 @@ Level loadLevel(int levelNr) {
       }); 
       
       StaticBlock floor   = new StaticBlock(40, 560, 700, 20);
-      StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 700, 20); //<>//
       StaticBlock lwall   = new StaticBlock(40, 300, 20, 280); //<>//
       StaticBlock rwall   = new StaticBlock(740, 300, 20, 280); //<>//
-
+ //<>//
       level_0.addStaticBlock(floor); //<>//
       level_0.addStaticBlock(ceiling); //<>//
       level_0.addStaticBlock(lwall);
@@ -49,7 +51,7 @@ Level loadLevel(int levelNr) {
       StaticBlock floor2 = new StaticBlock(480, 560, 270, 20);
       StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
       StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
-      StaticBlock rwall = new StaticBlock(740, 300, 20, 280);
+      StaticBlock rwall = new StaticBlock(740, 300, 20, 280); //<>//
       
       Enemy deathBlock = new Enemy(0, 800, 800, 20, level); //<>//
       deathBlock.statikus = true;
@@ -58,12 +60,12 @@ Level loadLevel(int levelNr) {
       level.addStaticBlock(floor2);
       level.addStaticBlock(ceiling);
       level.addStaticBlock(lwall);
-      level.addStaticBlock(rwall);
+      level.addStaticBlock(rwall); //<>//
       
       level.addEnemy(deathBlock); //<>//
       
       return level;
-    }
+    } //<>//
     case 2: {
     Level level = new Level(100, 400, 1050, 400, new Rect(0, 0, 1300, 600), new Background() { //<>//
         public void draw() {
@@ -72,10 +74,10 @@ Level loadLevel(int levelNr) {
           text("Hint: Try using the mouse", 600, 200);
         }
       }); 
-      
+       //<>//
       StaticBlock floor1 = new StaticBlock(40, 560, 400, 20); //<>//
       StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
-      StaticBlock ceiling = new StaticBlock(40, 300, 1220, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 1220, 20); //<>//
       StaticBlock lwall = new StaticBlock(40, 300, 20, 280); //<>//
       StaticBlock rwall = new StaticBlock(1260, 300, 20, 280); //<>//
       
@@ -108,7 +110,7 @@ Level loadLevel(int levelNr) {
       nme.addFrames(getZombieName());
       
       level.addStaticBlock(floor1);
-      level.addStaticBlock(floor2);
+      level.addStaticBlock(floor2); //<>//
       level.addStaticBlock(ceiling);
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
@@ -120,7 +122,7 @@ Level loadLevel(int levelNr) {
     }
     case 4: {
     Level level = new Level(100, 400, 600, 40, new Rect(0, 0, 700, 600), new Background() {
-        public void draw() {
+        public void draw() { //<>//
           textSize(20); //<>//
           text("Mathewializer: Level 4", 300, 200); //<>//
           text("You will need good relfexes for this one",300,400);
@@ -128,7 +130,7 @@ Level loadLevel(int levelNr) {
       }); 
       
       StaticBlock floor = new StaticBlock(40, 560, 700, 20);
-      StaticBlock floor1 = new StaticBlock(40, 360, 300, 20);
+      StaticBlock floor1 = new StaticBlock(40, 360, 300, 20); //<>//
       StaticBlock floor2 = new StaticBlock(550, 200, 210, 20);
       StaticBlock ceiling = new StaticBlock(40, 10, 700, 20); //<>//
       StaticBlock lwall = new StaticBlock(40, 10, 20, 570);
@@ -137,12 +139,12 @@ Level loadLevel(int levelNr) {
       Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
       deathBlock.statikus = true;
       
-      Enemy nme = new Enemy(600, 50, level);
+      Enemy nme = new Enemy(600, 50, level); //<>//
       nme.addFrames("zombi1");
        //<>//
       level.addStaticBlock(floor);
       level.addStaticBlock(floor1);
-      level.addStaticBlock(floor2);
+      level.addStaticBlock(floor2); //<>//
       level.addStaticBlock(ceiling);
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
@@ -151,7 +153,7 @@ Level loadLevel(int levelNr) {
       level.addEnemy(nme);
       
       return level;
-    }
+    } //<>//
     default: return null; //<>//
   } //<>// //<>//
 }
@@ -167,8 +169,11 @@ void setup() {
 
   currentLevel = loadLevel(levelNr);
   
+  ded = minim.loadSnippet("SFX/aww.wav");
+  ded.rewind();
   
-  
+  whoops = minim.loadSnippet("SFX/whoops.wav");
+  whoops.rewind();
 } 
 
 float x_offset = 0;

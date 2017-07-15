@@ -6,7 +6,7 @@ public class Player extends DynamicBlock {
   private float yacc = 0;
   boolean isJumping=false;
   
-  AudioSnippet ded;
+
   
   public Player(float x, float y, Level level) {
     super(x, y, 80, 150,level);
@@ -88,7 +88,7 @@ public class Player extends DynamicBlock {
   //System.out.println(-level.dimension.y+level.dimension.h);
   if (isDynamicCollision() || (this.y>-level.dimension.y+level.dimension.h))
     {
-      ded = minim.loadSnippet("SFX/aww.wav");
+
       ded.rewind();
       ded.play();
       
