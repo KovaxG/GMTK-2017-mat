@@ -1,6 +1,6 @@
 public class Enemy extends DynamicBlock {
   
-  public float speed = 5; // The horizontal speed of the enemy
+  public float speed = 2; // The horizontal speed of the enemy
   public Level level;
   
   public Enemy(float x, float y,Level level) {
@@ -8,8 +8,9 @@ public class Enemy extends DynamicBlock {
   }
   
   public void update() {
-    // TODO follow player
-    // x += speed if player is to the right, -speed if the player is to the left
+    // Follow player
+    float direction = sgn(level.player.x - x);
+    x += direction * speed;
     
     // Gravitational Collision
     y += gravity;
