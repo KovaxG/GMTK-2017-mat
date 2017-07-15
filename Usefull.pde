@@ -36,6 +36,11 @@ int sgn(float x) {
 }
 
 float saturate(float x, float min, float max) {
+  if (min>max){
+     float c=min;
+      min=max;
+      max=c;
+  }
   if (x > max) return max;
   else if (x < min) return min;
   else return x;
