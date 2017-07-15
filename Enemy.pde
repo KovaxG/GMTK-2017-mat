@@ -2,41 +2,42 @@ public class Enemy extends DynamicBlock {
   
   public float speed = 2; // The horizontal speed of the enemy
   public Level level;
+  float ySpeed = 0;
+  float yacc=0;
   
-  public Enemy(float x, float y) {
-    super(x, y, 50, 100);
+  public Enemy(float x, float y,Level level) {
+    super(x, y, 50, 100,level);
   }
   
   public void update() {
     // Follow player
     float direction = sgn(level.player.x - x);
     x += direction * speed;
+    if (isStaticCollision() || isDynamicCollision()){
+      x-= speed * direction;
+    }
     
-    // Gravity
-    y += 1;
+    ySpeed += gravity - yacc;
+    if (yacc>0){
+      yacc -= gravity;
+    }
+     y += ySpeed;
+     if (isStaticCollision()){
+      y -= ySpeed;
+      ySpeed=0;
+    }
     
     // Gravitational Collision
-    boolean isCollision=false;
-    if (level.mouseBlock != null) {
-      if (this.isCollide(level.mouseBlock)) {
-        isCollision = true;
-      }
-    }
-    for (Rect rect:level.getStaticBlocks()){
-      if (this.isCollide(rect)){
-        isCollision = true;
-      }
-    }
-    for (Enemy enemy:level.getEnemies()){
-      if (this.isCollide(enemy) && !this.equals(enemy)){
-        isCollision = true;
-      }
-    }
-    if (isCollision){
-      y -= 1;
+    y += gravity;
+    if (isAnyCollision()){
+       y -= gravity; 
     }
     
+    
+    
   }
+  
+
   
   public void draw() {
     strokeWeight(1);
