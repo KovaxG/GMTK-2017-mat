@@ -8,7 +8,7 @@ Level  level;
 
 void setup() {
   size(800, 600);
-  frameRate(60);
+  frameRate(60); //<>//
   
   level=new Level();
   player = new Player(200, 100, level);
