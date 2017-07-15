@@ -8,9 +8,10 @@ public class Player extends DynamicBlock {
     this.level=level;
   }
   
-  public void update(char direction) {
-    //asdw
-    // TODO Handle input here
+  public void update(int direction, boolean jump) {
+    // Input
+    x += speed * direction;
+    
     
     // Gravity
     y += 1;

@@ -39,8 +39,8 @@ public class Level {
   }
   
   
-  public void update(char c){
-    player.update(c);
+  public void update(int direction, boolean jump){
+    player.update(direction, jump);
     for (Enemy enemy:  enemies){
      enemy.update(); 
    }
