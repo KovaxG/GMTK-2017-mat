@@ -29,6 +29,8 @@ public class Player extends DynamicBlock {
   }
   
   public void draw() {
+    strokeWeight(1);
+    stroke(0);
     fill(0, 100, 0);
     rect(x, y, w, h);
   }

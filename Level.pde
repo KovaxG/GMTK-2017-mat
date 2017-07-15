@@ -3,12 +3,14 @@ public class Level {
   private ArrayList<Enemy> enemies;
   Player player;
   StaticBlock mouseBlock;
+  Door door;
   
   public Level(){
     staticBlocks = new ArrayList<StaticBlock>();
     enemies =  new ArrayList<Enemy>();
     
     player = new Player(0,200, this);
+    door = new Door(500, 380);
   }
   
   public void addEnemy(Enemy enemy){
@@ -47,9 +49,11 @@ public class Level {
   }
   
   public void draw() {
+    door.draw();
     player.draw();
     for (Enemy enemy : enemies) enemy.draw();
     for (StaticBlock block : staticBlocks) block.draw();
+    
     
     if (mouseBlock != null) mouseBlock.draw();
   }
