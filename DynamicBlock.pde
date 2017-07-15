@@ -25,8 +25,6 @@ public class DynamicBlock extends Rect {
     
     if (frame1 == null || frame2 == null) return;
     
-    System.out.println("Drawing animation");
-    
     if (moving) {
       frame = frame + 1;
       if (frame == 10) {

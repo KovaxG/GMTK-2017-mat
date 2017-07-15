@@ -23,6 +23,10 @@ public class Rect {
     return true;
   }
   
+  public void draw() {
+    fill(0, 0, 255);
+    rect(x, y, w, h);
+  }
 }
 
 int sgn(float x) {

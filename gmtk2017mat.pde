@@ -28,7 +28,7 @@ Level loadLevel(int levelNr) {
       
       return level_0;
     }
-    case 1: {
+    case 3: {
     Level level = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
           textSize(20);
@@ -37,13 +37,16 @@ Level loadLevel(int levelNr) {
       }); 
       
       StaticBlock floor1 = new StaticBlock(40, 560, 300, 20);
-      StaticBlock floor2 = new StaticBlock(450, 560, 300, 20);
+      StaticBlock floor2 = new StaticBlock(480, 560, 270, 20);
       StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
       StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
       StaticBlock rwall = new StaticBlock(740, 300, 20, 280);
       
       Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
       deathBlock.statikus = true;
+      
+      Enemy nme = new Enemy(600, 400, level);
+      nme.addFrames("zombi1");
       
       level.addStaticBlock(floor1);
       level.addStaticBlock(floor2);
@@ -52,6 +55,7 @@ Level loadLevel(int levelNr) {
       level.addStaticBlock(rwall);
       
       level.addEnemy(deathBlock);
+      level.addEnemy(nme);
       
       return level;
     }

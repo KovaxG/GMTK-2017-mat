@@ -5,8 +5,14 @@ public class Enemy extends DynamicBlock {
   float yacc=0;
   public boolean statikus = false;
   
+  Rect footSense1;
+  Rect footSense2;
+  
   public Enemy(float x, float y,Level level) {
     super(x, y, 80, 150,level);
+    
+    footSense1 = new Rect(x, y + h, 10, 10);
+    footSense2 = new Rect(x, y + h, 10, 10);
   }
   
   public Enemy(float x, float y, float w, float h, Level level) {
@@ -26,12 +32,42 @@ public class Enemy extends DynamicBlock {
   public void update() {
     if (statikus) return;
     
+    // Update invisible floor sense
+    footSense1.x = x;
+    footSense1.y = y + h;
+    footSense2.x = x + w;
+    footSense2.y = y + h;
+    
+    // Check if sense collides
+    boolean sense1 = false;
+    boolean sense2 = false;
+    for (StaticBlock sb : level.staticBlocks) {
+      sense1 = sense1 || footSense1.isCollide(sb);
+      sense2 = sense2 || footSense2.isCollide(sb);
+    }
+    if (level.mouseBlock != null) {
+      sense1 = sense1 || footSense1.isCollide(level.mouseBlock);
+      sense2 = sense2 || footSense2.isCollide(level.mouseBlock);
+    }
+    
     // Follow player
     int direction = sgn(level.player.x - x);
     updateAnimation(direction);
+    
+    float xo = x;
     x += direction * speed;
+    
     if (isStaticCollision() || isDynamicCollision()){
       x-= speed * direction;
+    } else {
+      if (!sense1 && x < xo) {
+        x -= direction * speed;
+        direction = 0;
+      }
+      if (!sense2 && x > xo) {
+        x -= direction * speed;
+        direction = 0;
+      }
     }
     
     moving = direction !=  0;
@@ -53,6 +89,8 @@ public class Enemy extends DynamicBlock {
     if (isAnyCollision()){
        y -= gravity; 
     } 
+    
+    
   }
   
   public void draw() {
