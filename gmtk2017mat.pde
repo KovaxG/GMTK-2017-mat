@@ -7,18 +7,20 @@ Level loadLevels(int levelNr) {
   
   StaticBlock floor = new StaticBlock(40, 560, 700, 20);
   StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
-  StaticBlock lwall = new StaticBlock(40, 300, 20, 200);
+  StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
+  StaticBlock rwall = new StaticBlock(740, 300, 20, 280);
   
   level_0.addStaticBlock(floor);
   level_0.addStaticBlock(ceiling);
   level_0.addStaticBlock(lwall);
+  level_0.addStaticBlock(rwall);
   
   /*
    level = level_0;
   enemy = new Enemy(400, 100,level);
-  floor = new StaticBlock(0, 500, 1200, 20);
+  floor = new StaticBlock(0, 500, 1200, 20); //<>//
  
-  level.addEnemy(enemy); //<>//
+  level.addEnemy(enemy);
   level.addStaticBlock(floor);
   
   
