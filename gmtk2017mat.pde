@@ -5,9 +5,7 @@ Minim minim;
 Level  currentLevel;
 int levelNr = 0;
 
-import processing.sound.*;
-SoundFile file;
-
+ //<>//
 Level loadLevel(int levelNr) {
   switch(levelNr) {
     case 0: {
@@ -53,7 +51,7 @@ Level loadLevel(int levelNr) {
       level.addStaticBlock(lwall);
       level.addStaticBlock(rwall);
       
-      level.addEnemy(deathBlock);
+      level.addEnemy(deathBlock); //<>//
       
       return level;
     }
@@ -132,7 +130,7 @@ Level loadLevel(int levelNr) {
       
       Enemy nme = new Enemy(600, 50, level);
       nme.addFrames("zombi1");
-      
+       //<>//
       level.addStaticBlock(floor);
       level.addStaticBlock(floor1);
       level.addStaticBlock(floor2);

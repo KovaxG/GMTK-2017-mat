@@ -40,7 +40,12 @@ public class Player extends DynamicBlock {
       if (    level.door.x <= playerHorizontalMidPoint && playerHorizontalMidPoint <= level.door.x + level.door.w
            && level.door.y <= playerVerticalMidPoint   && playerVerticalMidPoint   <= level.door.y + level.door.h) {
         levelNr++;
+        
         currentLevel = loadLevel(levelNr);
+        if (currentLevel == null){
+          levelNr=0;
+          currentLevel=loadLevel(0);
+        }
       }
     }
     
