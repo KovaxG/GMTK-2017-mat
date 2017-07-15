@@ -1,5 +1,5 @@
 Level  currentLevel;
-int levelNr = 3;
+int levelNr = 4;
 
 Level loadLevel(int levelNr) {
   switch(levelNr) {
@@ -33,7 +33,7 @@ Level loadLevel(int levelNr) {
       
       StaticBlock floor1 = new StaticBlock(40, 560, 300, 20);
       StaticBlock floor2 = new StaticBlock(480, 560, 270, 20);
-      StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 200, 20);
       StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
       StaticBlock rwall = new StaticBlock(740, 300, 20, 280);
       
@@ -93,6 +93,40 @@ Level loadLevel(int levelNr) {
       Enemy nme = new Enemy(600, 400, level);
       nme.addFrames("zombi1");
       
+      level.addStaticBlock(floor1);
+      level.addStaticBlock(floor2);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall);
+      level.addStaticBlock(rwall);
+      
+      level.addEnemy(deathBlock);
+      level.addEnemy(nme);
+      
+      return level;
+    }
+    case 4: {
+    Level level = new Level(100, 400, 600, 40, new Rect(0, 0, 700, 600), new Background() {
+        public void draw() {
+          textSize(20);
+          text("Mathewializer: Level 4", 300, 200);
+          text("You will need good relfexes for this one",300,400);
+        }
+      }); 
+      
+      StaticBlock floor = new StaticBlock(40, 560, 700, 20);
+      StaticBlock floor1 = new StaticBlock(40, 360, 300, 20);
+      StaticBlock floor2 = new StaticBlock(550, 200, 210, 20);
+      StaticBlock ceiling = new StaticBlock(40, 10, 700, 20);
+      StaticBlock lwall = new StaticBlock(40, 10, 20, 570);
+      StaticBlock rwall = new StaticBlock(740, 10, 20, 570);
+      
+      Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
+      deathBlock.statikus = true;
+      
+      Enemy nme = new Enemy(600, 50, level);
+      nme.addFrames("zombi1");
+      
+      level.addStaticBlock(floor);
       level.addStaticBlock(floor1);
       level.addStaticBlock(floor2);
       level.addStaticBlock(ceiling);
