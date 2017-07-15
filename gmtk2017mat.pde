@@ -4,27 +4,36 @@ int levelNr = 2;
 Level loadLevel(int levelNr) {
   switch(levelNr) {
     case 0: {
-      Level level_0 = new Level(100, 400, 550, 440, new Rect(0, 0, 700, 600), new Background() {
+      Level level_0 = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
           textSize(20);
           text("Mathewializer: Level 1", 300, 200);
         } //<>//
       }); 
       
-      StaticBlock floor = new StaticBlock(40, 560, 700, 20);
+      StaticBlock floor   = new StaticBlock(40, 560, 700, 20);
       StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
-      StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
-      StaticBlock rwall = new StaticBlock(740, 300, 20, 280); //<>//
+      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280);
+      StaticBlock rwall   = new StaticBlock(740, 300, 20, 280); //<>//
+      
+      //Enemy nme = new Enemy(500, 400, level_0);
+      //nme.addFrames("zombi6");
       
       level_0.addStaticBlock(floor);
       level_0.addStaticBlock(ceiling);
       level_0.addStaticBlock(lwall);
       level_0.addStaticBlock(rwall);
+<<<<<<< HEAD
        //<>//
+=======
+      
+      //level_0.addEnemy(nme);
+      
+>>>>>>> e277d2c28488712f756906855e9858031cec0e13
       return level_0;
     }
     case 1: {
-    Level level = new Level(100, 400, 550, 440, new Rect(0, 0, 700, 600), new Background() {
+    Level level = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
           textSize(20);
           text("Mathewializer: Level 2", 300, 200);
