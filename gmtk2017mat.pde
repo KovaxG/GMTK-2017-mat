@@ -1,5 +1,5 @@
 Level  currentLevel;
-int levelNr = 0;
+int levelNr = 2;
 
 Level loadLevel(int levelNr) {
   switch(levelNr) {
@@ -8,7 +8,7 @@ Level loadLevel(int levelNr) {
         public void draw() {
           textSize(20);
           text("Mathewializer: Level 1", 300, 200);
-        }
+        } //<>//
       }); 
       
       StaticBlock floor = new StaticBlock(40, 560, 700, 20);
@@ -20,7 +20,7 @@ Level loadLevel(int levelNr) {
       level_0.addStaticBlock(ceiling);
       level_0.addStaticBlock(lwall);
       level_0.addStaticBlock(rwall);
-      
+       //<>//
       return level_0;
     }
     case 1: {
@@ -50,6 +50,29 @@ Level loadLevel(int levelNr) {
       
       return level;
     }
+    case 2: {
+    Level level = new Level(100, 400, 1050, 440, new Rect(0, 0, 1300, 600), new Background() {
+        public void draw() {
+          textSize(20);
+          text("Mathewializer: Level 3", 300, 200);
+          text("Hint: Tru using the mouse", 600, 200);
+        }
+      }); 
+      
+      StaticBlock floor1 = new StaticBlock(40, 560, 400, 20);
+      StaticBlock floor2 = new StaticBlock(900, 560, 360, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 1220, 20);
+      StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
+      StaticBlock rwall = new StaticBlock(1260, 300, 20, 280);
+      
+      level.addStaticBlock(floor1);
+      level.addStaticBlock(floor2);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall);
+      level.addStaticBlock(rwall);
+      
+      return level;
+    }
     default: return null;
   } //<>// //<>//
 }
@@ -70,22 +93,24 @@ void draw() {
   background(0); 
   
    currentLevel.update(direction, jump);
-  
-   x_offset = saturate(-currentLevel.player.x + width/2, currentLevel.dimension.x, currentLevel.dimension.x);
+   System.out.println(-currentLevel.player.x + width/2);
+   System.out.println(currentLevel.dimension.x-currentLevel.dimension.w+width/2);
+   
+   x_offset = saturate(currentLevel.player.x , currentLevel.dimension.w-width/2,width/2 ) - width/2;
    y_offset = saturate(-currentLevel.player.y + height/2, currentLevel.dimension.y, currentLevel.dimension.h);
   
-   translate(x_offset, y_offset);
+   translate(-x_offset, y_offset);
   
    currentLevel.draw();
 }
 
 void mousePressed() {
   if (mouseButton == LEFT && currentLevel.mouseBlock == null) {
-    currentLevel.createMouseBlock(true, mouseX - x_offset, mouseY - y_offset);
+    currentLevel.createMouseBlock(true, mouseX + x_offset, mouseY - y_offset);
   }
   
   if (mouseButton == RIGHT && currentLevel.mouseBlock == null) {
-    currentLevel.createMouseBlock(false, mouseX - x_offset, mouseY - y_offset);
+    currentLevel.createMouseBlock(false, mouseX + x_offset, mouseY - y_offset);
   }
 }
 
