@@ -9,7 +9,7 @@ Minim minim;
   PImage bgSub; //<>//
   
 Level  currentLevel;
-int levelNr = 4;
+int levelNr = 5;
  //<>//
  //<>//
  
@@ -157,6 +157,40 @@ Level loadLevel(int levelNr) {
       
       return level;
     }
+    case 5: {
+    Level level = new Level(100, 50, 600, 400, new Rect(0, 0, 700, 600), new Background() {
+        public void draw() {
+          textSize(20); //<>//
+          text("Mathewializer: Level 4", 300, 200); //<>//
+          text("You will need good relfexes for this one",300,400);
+        }
+      }); 
+      
+      StaticBlock floor = new StaticBlock(40, 560, 700, 20);
+      StaticBlock floor2 = new StaticBlock(40, 200, 510, 20);
+      StaticBlock ceiling = new StaticBlock(40, 10, 700, 20); //<>//
+      StaticBlock wall = new StaticBlock(530, 220, 20, 340);
+      StaticBlock lwall = new StaticBlock(40, 10, 20, 570);
+      StaticBlock rwall = new StaticBlock(740, 10, 20, 570);
+      
+      Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
+      deathBlock.statikus = true;
+      
+      Enemy nme = new Enemy(600, 50, level);
+      nme.addFrames("zombi1");
+       //<>//
+      level.addStaticBlock(floor);
+      level.addStaticBlock(floor2);
+      level.addStaticBlock(wall);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall); //<>//
+      level.addStaticBlock(rwall);
+      
+      level.addEnemy(deathBlock);
+      level.addEnemy(nme);
+      
+      return level;
+    }
     default: return null; //<>//
   } //<>// //<>//
 }
@@ -215,6 +249,9 @@ void draw() {
    
    fill(255);
    rect(mouseX, mouseY, 5, 5);
+   
+   ///mouseposition;
+   text("X: "+(mouseX+x_offset)+"; Y: "+(mouseY-y_offset),20,40);
    
    ///FPS counter
    text("FPS: "+FPS,20,20);
