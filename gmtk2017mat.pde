@@ -9,7 +9,7 @@ Minim minim;
   PImage bgSub; //<>//
   
 Level  currentLevel;
-int levelNr = 6;
+int levelNr = 8;
  //<>//
  //<>//
  
@@ -199,7 +199,7 @@ Level loadLevel(int levelNr) { //<>//
       return level;
     }
     case 6: {
-    Level level = new Level(100, 340, 1100, 400, new Rect(0, 0, 1700, 600), new Background() {
+    Level level = new Level(100, 240, 1100, 400, new Rect(0, 0, 1700, 600), new Background() {
         public void draw() {
           textSize(20); //<>//
           text("Mathewializer: Level 7", textStartX, textStartY); //<>//
@@ -214,8 +214,8 @@ Level loadLevel(int levelNr) { //<>//
       StaticBlock lwall = new StaticBlock(40, 50, 20, 530); //<>//
       StaticBlock rwall = new StaticBlock(1260, 50, 20, 530); //<>//
       
-      for (int i=0;i<9;i++){
-        Enemy nme = new Enemy(350+i*100, 400, level);
+      for (int i=0;i<8;i++){
+        Enemy nme = new Enemy(400+i*100, 400, level);
         nme.addFrames(getZombieName());
         level.addEnemy(nme);
       }
@@ -229,7 +229,73 @@ Level loadLevel(int levelNr) { //<>//
       
       return level;
     }
+    
     case 7: {
+    Level level = new Level(760, 400, 100, 400, new Rect(0, 0, 1700, 600), new Background() {
+        public void draw() {
+          textSize(20); //<>//
+          text("Mathewializer: Level 7", textStartX, textStartY); //<>//
+          text("Sometimes the curious are rewarded",textStartX, textStartY+textIncrement);
+        }
+      }); 
+      
+      StaticBlock floor1 = new StaticBlock(40, 560, 1520, 20); //<>//
+      //StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
+      StaticBlock ceiling = new StaticBlock(40, 50, 1520, 20);
+      StaticBlock lwall = new StaticBlock(40, 50, 20, 530); //<>//
+      StaticBlock rwall = new StaticBlock(1560, 50, 20, 530); //<>//
+      
+      for (int i=0;i<14;i++){
+        if (i>=4 && i<=9)
+          continue;
+        Enemy nme = new Enemy(100+i*100, 400, level);
+        nme.addFrames(getZombieName());
+        level.addEnemy(nme);
+      }
+      
+      level.addStaticBlock(floor1);
+      //level.addStaticBlock(floor2);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall); //<>//
+      level.addStaticBlock(rwall);
+      
+      
+      return level;
+    }
+    
+    case 8: {
+    Level level = new Level(500, 1500, 100, 400, new Rect(0, 0, 1000, 2600), new Background() {
+        public void draw() {
+          textSize(20); //<>//
+          text("Mathewializer: Level 7", textStartX, textStartY); //<>//
+          text("Once in a while",textStartX, textStartY-textIncrement*3);
+          text("One might rise from the depths of hell",textStartX, textStartY-textIncrement*6);
+        }
+      }); 
+      
+      StaticBlock floor1 = new StaticBlock(40, 2560, 1520, 20); //<>//
+      //StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
+      StaticBlock ceiling = new StaticBlock(40, 50, 1520, 20);
+      StaticBlock lwall = new StaticBlock(40, 50, 20, 2530); //<>//
+      StaticBlock rwall = new StaticBlock(1560, 50, 20, 2530); //<>//
+      
+      for (int i=0;i<14;i++){
+        Enemy nme = new Enemy(100+i*100, 400, level);
+        nme.addFrames(getZombieName());
+        level.addEnemy(nme);
+      }
+      
+      level.addStaticBlock(floor1);
+      //level.addStaticBlock(floor2);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall); //<>//
+      level.addStaticBlock(rwall);
+      
+      
+      return level;
+    }
+    
+    case 9: {
     Level level = new Level(100, 50, 600, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
           textSize(20); //<>//
