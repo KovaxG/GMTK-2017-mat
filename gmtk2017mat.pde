@@ -9,7 +9,7 @@ Minim minim;
   PImage bgSub; //<>//
   
 Level  currentLevel;
-int levelNr =0;
+int levelNr =7;
  //<>//
  //<>//
  
@@ -230,29 +230,29 @@ Level loadLevel(int levelNr) { //<>//
     }
     
     case 7: {
-    Level level = new Level(500, 1500, 100, 400, new Rect(0, 0, 1000, 2600), new Background() {
+    Level level = new Level(700, 1500, 100, 400, new Rect(0, 0, 1000, 2600), new Background() {
         public void draw() {
           textSize(20); //<>//
-          text("Mathewializer: Level 7", textStartX, textStartY); //<>//
-          text("Once in a while",textStartX, textStartY-textIncrement*3);
-          text("One might rise from the depths of hell",textStartX, textStartY-textIncrement*6);
+          text("Mathewializer: Level 7", textStartX+100, textStartY+1500); //<>//
+          text("Once in a while",textStartX+100, textStartY-textIncrement*3+1500);
+          text("One might rise from the depths of hell",textStartX+100, textStartY-textIncrement*6+1500);
         }
       }); 
       
-      StaticBlock floor1 = new StaticBlock(40, 2560, 1520, 20); //<>//
-      //StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
+      StaticBlock floor1 = new StaticBlock(40, 2560, 920, 20); //<>//
+      StaticBlock floor2 = new StaticBlock(40, 560, 360, 20); //<>//
       StaticBlock ceiling = new StaticBlock(40, 50, 1520, 20);
       StaticBlock lwall = new StaticBlock(40, 50, 20, 2530); //<>//
-      StaticBlock rwall = new StaticBlock(1560, 50, 20, 2530); //<>//
+      StaticBlock rwall = new StaticBlock(960, 50, 20, 2530); //<>//
       
-      for (int i=0;i<14;i++){
-        Enemy nme = new Enemy(100+i*100, 400, level);
+      for (int i=0;i<9;i++){
+        Enemy nme = new Enemy(80+i*100, 2400, level);
         nme.addFrames(getZombieName());
         level.addEnemy(nme);
       }
       
       level.addStaticBlock(floor1);
-      //level.addStaticBlock(floor2);
+      level.addStaticBlock(floor2);
       level.addStaticBlock(ceiling);
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
@@ -332,7 +332,7 @@ float x_offset = 0;
 float y_offset = 0;
 
 void draw() {
-  //background(0); 
+   background(0); 
    bgSub = bgImage.get((int)x_offset+200,(int)y_offset+500,800,600);
    image(bgSub,0,0);
   
