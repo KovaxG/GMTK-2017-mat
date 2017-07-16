@@ -313,6 +313,7 @@ Level loadLevel(int levelNr) { //<>//
         }
       }); 
       
+      bgImage.resize(8000,4000);
       StaticBlock floor1 = new StaticBlock(40, 2560, 920, 20); //<>//
       StaticBlock floor2 = new StaticBlock(40, 560, 360, 20); //<>//
       StaticBlock ceiling = new StaticBlock(40, 50, 1520, 20);
@@ -344,6 +345,7 @@ Level loadLevel(int levelNr) { //<>//
           text("without any meaning",textStartX,250+textIncrement); //<>// //<>// //<>//
         }
       }); 
+      bgImage.resize(4000,2000);
       
       StaticBlock floor = new StaticBlock(40, 1060, 700, 20);
       StaticBlock floor2 = new StaticBlock(40, 700, 510, 20);
@@ -377,6 +379,8 @@ void setup() {
   minim = new Minim(this);
   noCursor();
 
+  //bg image
+  bgImage = loadImage("GFX/bg.png");
 
   frameRate(60);
 
@@ -392,8 +396,6 @@ void setup() {
   winSound = minim.loadSnippet("SFX/win.wav");
   winSound.rewind();
   
-  //bg image
-  bgImage = loadImage("GFX/bg.png");
   
   //FPS counter
   currentTime = millis();
