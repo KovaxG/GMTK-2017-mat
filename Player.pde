@@ -4,7 +4,7 @@ public class Player extends DynamicBlock {
   private float jumpSpeed = defaultJumpSpeed;
   private float ySpeed = 0;
   private float yacc = 0;
-  boolean isJumping=false;
+  boolean isJumping=true;
   
 
   
