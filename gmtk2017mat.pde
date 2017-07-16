@@ -5,11 +5,13 @@ Minim minim;
   AudioSnippet ded;
   AudioSnippet whoops;
 
-  PImage bgImage; //<>//
-  PImage bgSub; //<>//
+PImage bgImage; //<>//
+PImage bgSub; //<>//
+  
+boolean devMode = false;
   
 Level  currentLevel;
-int levelNr = 6;
+int levelNr = 0;
  //<>//
  //<>//
  
@@ -23,11 +25,39 @@ Level loadLevel(int levelNr) { //<>//
   
   switch(levelNr) {
     case 0: {
+      
       Level level_0 = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
+        public PImage title = loadImage("GFX/Title.png");
+        public PImage abut = loadImage("GFX/A.png");
+        public PImage dbut = loadImage("GFX/D.png");
+        public PImage wbut = loadImage("GFX/W.png");
+        public PImage arrow = loadImage("GFX/arrow.png");
+        public PImage doorSign = loadImage("GFX/enter.png");
+        
         public void draw() { //<>//
           textSize(20);
-          text("Mathewializer: Level 1", textStartX, textStartY);
-          text("You have found yourself fleeing from an apocalypse",textStartX, textStartY+textIncrement);
+          text("Level 1: Start", textStartX, textStartY+50);
+          text("You have found yourself fleeing from an apocalypse",textStartX, textStartY+textIncrement + 50);
+          
+          image(title, 380 - title.width/2, 20);
+          
+          arrow.resize(30, 30);
+          
+          abut.resize(40, 40);
+          image(abut, 80, 350);
+          image(arrow, 80, 320);
+          
+          dbut.resize(40, 40);
+          image(dbut, 150, 350);
+          scale(-1, 1);
+          image(arrow, -190, 320);
+          scale(-1, 1);
+          
+          wbut.resize(40, 40);
+          image(wbut, 600, 340);
+          doorSign.resize(40, 40);
+          image(doorSign, 550, 340);
+          
         }  //<>//
       }); 
       
@@ -45,11 +75,19 @@ Level loadLevel(int levelNr) { //<>//
     }
     case 1: {
     Level level = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
+       PImage jumpsign = loadImage("GFX/jump.png");
+       PImage wbut = loadImage("GFX/W.png");
+      
         public void draw() {
           textSize(20);
-          text("Mathewializer: Level 2", textStartX, textStartY);
+          text("Level 2 : The Hole", textStartX, textStartY);
           text("To reach a safe haven you have found yourself wandering",textStartX, textStartY+textIncrement);
           text("through a building",textStartX, textStartY+textIncrement*2);
+          
+          jumpsign.resize(80, 40);
+          image(jumpsign, 370, 400);
+          wbut.resize(40, 40);
+          image(wbut, 390, 350);
         }
       });  //<>//
       
@@ -74,10 +112,15 @@ Level loadLevel(int levelNr) { //<>//
     }
     case 2: {
     Level level = new Level(100, 400, 1050, 400, new Rect(0, 0, 1300, 600), new Background() { //<>//
+        PImage mousebutton = loadImage("GFX/lmouse.png");
+      
         public void draw() { //<>//
           textSize(20);
-          text("Mathewializer: Level 3", textStartX, textStartY);
+          text("Level 3 : The Wide Hole", textStartX, textStartY);
           text("After eating a mouse, you have obtained the power to materialize a white object",textStartX, textStartY+textIncrement); //<>//
+          
+          mousebutton.resize(30, 40);
+          image(mousebutton, 225, 235);
         }
       }); 
       
@@ -99,9 +142,9 @@ Level loadLevel(int levelNr) { //<>//
     Level level = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
           textSize(20);
-          text("Mathewializer: Level 4", textStartX, textStartY);
+          text("Level 4 : Creep", textStartX, textStartY);
           text("You have yet again encountered the enemies you fled from",textStartX, textStartY+textIncrement);
-          text("Creeping through this building",textStartX, textStartY+textIncrement*2);
+          text("creeping through this building",textStartX, textStartY+textIncrement*2);
         }
       }); 
       
@@ -128,11 +171,11 @@ Level loadLevel(int levelNr) { //<>//
       
       return level;
     }
-    case 4: {
+    case 5: {
     Level level = new Level(100, 400, 600, 40, new Rect(0, 0, 700, 600), new Background() {
         public void draw() { //<>//
           textSize(20); //<>//
-          text("Mathewializer: Level 5", textStartX, textStartY-100); //<>//,
+          text("Level 5", textStartX, textStartY-100); //<>//,
           text("Some rooms are partially in ruin" ,textStartX, textStartY+textIncrement-100);
           text("and curiously look like a puzzle",textStartX, textStartY+textIncrement*2-100);
         }
@@ -163,7 +206,7 @@ Level loadLevel(int levelNr) { //<>//
       
       return level;
     }
-    case 5: {
+    case 6: {
     Level level = new Level(100, 50, 600, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
           textSize(20); //<>//
@@ -198,7 +241,7 @@ Level loadLevel(int levelNr) { //<>//
       
       return level;
     }
-    case 6: {
+    case 7: {
     Level level = new Level(100, 340, 1100, 400, new Rect(0, 0, 1700, 600), new Background() {
         public void draw() {
           textSize(20); //<>//
@@ -229,7 +272,7 @@ Level loadLevel(int levelNr) { //<>//
       
       return level;
     }
-    case 7: {
+    case 8: {
     Level level = new Level(100, 50, 600, 400, new Rect(0, 0, 700, 600), new Background() {
         public void draw() {
           textSize(20); //<>//
@@ -263,8 +306,41 @@ Level loadLevel(int levelNr) { //<>//
       
       return level;
     }
+    case 4: {
+      
+      Level level = new Level(100, 400, 600, 400, new Rect(0, 0, 1200, 600), new Background() {
+        PImage mouseBut = loadImage("GFX/rmouse.png");
+        
+        public void draw() {
+          textSize(20);
+          text("Level ?: Denied", textStartX, textStartY);
+          text("It's polite to open doors for others, but in this case some rudeness",textStartX, textStartY+textIncrement);
+          text("is in order. Maybe you could use some mouse powers?", textStartX, textStartY + textIncrement *2);
+          
+          mouseBut.resize(30, 40);
+          image(mouseBut, 470, textStartY + textIncrement *2 + 10);
+        } 
+      }); 
+      
+      StaticBlock floor   = new StaticBlock(40, 560, 1020, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 1020, 20);
+      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280);
+      StaticBlock rwall   = new StaticBlock(1050, 300, 20, 280);
+      
+      Enemy eminem = new Enemy(800, 400, level);
+      eminem.addFrames(getZombieName());
+
+      level.addStaticBlock(floor);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall);
+      level.addStaticBlock(rwall);
+      
+      level.addEnemy(eminem);
+      
+      return level;
+    }
     default: return null; //<>//
-  } //<>// //<>//
+  } //<>//
 }
 
 
@@ -320,18 +396,21 @@ void draw() {
    translate(x_offset, -y_offset);
    
    fill(255);
-   rect(mouseX, mouseY, 5, 5);
+     rect(mouseX, mouseY, 5, 5);
    
-   ///mouseposition;
-   text("X: "+(mouseX+x_offset)+"; Y: "+(mouseY-y_offset),20,40);
-   
-   ///FPS counter
-   text("FPS: "+FPS,20,20);
-   frames++;
-   if (millis() - lastTime >200){
-     FPS = frames*1000/(millis()-lastTime);
-     frames = 0;
-     lastTime = millis();
+   if (devMode) {
+          
+     ///mouseposition;
+     text("X: "+(mouseX+x_offset)+"; Y: "+(mouseY-y_offset),20,40);
+     
+     ///FPS counter
+     text("FPS: "+FPS,20,20);
+     frames++;
+     if (millis() - lastTime >200){
+       FPS = frames*1000/(millis()-lastTime);
+       frames = 0;
+       lastTime = millis();
+     }
    }
 }
 
@@ -361,13 +440,15 @@ int direction = 0;
 boolean jump = false;
 
 void keyPressed() {
-  if      (key == 'a') direction = -1;
-  else if (key == 'd') direction = 1;
-  else if (key == 'w') jump = true;
+  if      (key == 'a' || key == 'A') direction = -1;
+  else if (key == 'd' || key == 'D') direction = 1;
+  else if (key == 'w' || key == 'W') jump = true;
+  else if (key == '`' &&  devMode) devMode = false;
+  else if (key == '`' && !devMode) devMode = true;
 }
 
 void keyReleased() {
-  if (key == 'a' && direction == -1) direction = 0;
-  if (key == 'd' && direction ==  1) direction = 0;
-  if (key == 'w') jump = false;
+  if ((key == 'a'  || key == 'A') && direction == -1) direction = 0;
+  if ((key == 'd'  || key == 'D') && direction ==  1) direction = 0;
+  if ( key == 'w'  || key == 'W') jump = false;
 }
