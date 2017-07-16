@@ -2,20 +2,18 @@ import ddf.minim.*;
 import java.util.Random;
 
 Minim minim;
-  AudioSnippet ded;
-  AudioSnippet whoops;
+AudioSnippet ded;
+AudioSnippet whoops;
 
-PImage bgImage; //<>//
-PImage bgSub; //<>//
+PImage bgImage;  //<>//
+PImage bgSub;  //<>//
   
 boolean devMode = false;
   
 Level  currentLevel;
 int levelNr = 0;
- //<>//
- //<>//
- 
-  int[] goodZombies={1,2,3,5,6};
+  //<>//
+  int[] goodZombies={1,2,3,5,6}; //<>//
   public String getZombieName(){
     return "zombi"+goodZombies[new Random().nextInt(goodZombies.length)];
   }
@@ -23,7 +21,7 @@ int levelNr = 0;
   int textStartX = 70,textStartY=200,textIncrement=20;
 Level loadLevel(int levelNr) { //<>//
   
-  switch(levelNr) {
+  switch(levelNr) { //<>//
     case 0: {
       
       Level level_0 = new Level(100, 400, 550, 400, new Rect(0, 0, 700, 600), new Background() {
@@ -36,7 +34,7 @@ Level loadLevel(int levelNr) { //<>//
         
         public void draw() { //<>//
           textSize(20);
-          text("Level 1: Start", textStartX, textStartY+50);
+          text("Level 1: Start", textStartX, textStartY+50); //<>//
           text("You have found yourself fleeing from an apocalypse",textStartX, textStartY+textIncrement + 50);
           
           image(title, 380 - title.width/2, 20);
@@ -58,18 +56,18 @@ Level loadLevel(int levelNr) { //<>//
           doorSign.resize(40, 40);
           image(doorSign, 550, 340);
           
-        }  //<>//
+        } 
       }); 
-      
+       //<>//
       StaticBlock floor   = new StaticBlock(40, 560, 700, 20); //<>//
       StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
-      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280); //<>//
+      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280); //<>// //<>//
       StaticBlock rwall   = new StaticBlock(740, 300, 20, 280); //<>//
-
-      level_0.addStaticBlock(floor); //<>//
+ //<>//
+      level_0.addStaticBlock(floor); //<>// //<>//
       level_0.addStaticBlock(ceiling); //<>//
-      level_0.addStaticBlock(lwall);
-      level_0.addStaticBlock(rwall);
+      level_0.addStaticBlock(lwall); //<>//
+      level_0.addStaticBlock(rwall); //<>//
       
       return level_0;
     }
@@ -91,7 +89,7 @@ Level loadLevel(int levelNr) { //<>//
         }
       });  //<>//
       
-      StaticBlock floor1 = new StaticBlock(40, 560, 300, 20);
+      StaticBlock floor1 = new StaticBlock(40, 560, 300, 20); //<>//
       StaticBlock floor2 = new StaticBlock(480, 560, 270, 20);
       StaticBlock ceiling = new StaticBlock(40, 300, 700, 20);
       StaticBlock lwall = new StaticBlock(40, 300, 20, 280);
@@ -99,38 +97,38 @@ Level loadLevel(int levelNr) { //<>//
       
       Enemy deathBlock = new Enemy(0, 800, 800, 20, level); //<>//
       deathBlock.statikus = true; //<>//
-      
-      level.addStaticBlock(floor1);
+       //<>//
+      level.addStaticBlock(floor1); //<>//
       level.addStaticBlock(floor2);
       level.addStaticBlock(ceiling);
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
-      
+       //<>//
       level.addEnemy(deathBlock); //<>//
       
-      return level;
+      return level; //<>//
     }
     case 2: {
     Level level = new Level(100, 400, 1050, 400, new Rect(0, 0, 1300, 600), new Background() { //<>//
         PImage mousebutton = loadImage("GFX/lmouse.png");
-      
+       //<>//
         public void draw() { //<>//
           textSize(20);
-          text("Level 3 : The Wide Hole", textStartX, textStartY);
+          text("Level 3 : The Wide Hole", textStartX, textStartY); //<>//
           text("After eating a mouse, you have obtained the power to materialize a white object",textStartX, textStartY+textIncrement); //<>//
           
-          mousebutton.resize(30, 40);
+          mousebutton.resize(30, 40); //<>//
           image(mousebutton, 225, 235);
         }
       }); 
       
       StaticBlock floor1 = new StaticBlock(40, 560, 400, 20); //<>//
       StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
-      StaticBlock ceiling = new StaticBlock(40, 300, 1220, 20);
-      StaticBlock lwall = new StaticBlock(40, 300, 20, 280); //<>//
+      StaticBlock ceiling = new StaticBlock(40, 300, 1220, 20); //<>//
+      StaticBlock lwall = new StaticBlock(40, 300, 20, 280); //<>// //<>//
       StaticBlock rwall = new StaticBlock(1260, 300, 20, 280); //<>//
-      
-      level.addStaticBlock(floor1);
+       //<>//
+      level.addStaticBlock(floor1); //<>//
       level.addStaticBlock(floor2);
       level.addStaticBlock(ceiling);
       level.addStaticBlock(lwall);
@@ -155,7 +153,7 @@ Level loadLevel(int levelNr) { //<>//
       StaticBlock rwall = new StaticBlock(740, 300, 20, 280);
        //<>//
       Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
-      deathBlock.statikus = true;
+      deathBlock.statikus = true; //<>//
       
       Enemy nme = new Enemy(600, 400, level);
       nme.addFrames(getZombieName());
@@ -165,9 +163,42 @@ Level loadLevel(int levelNr) { //<>//
       level.addStaticBlock(ceiling);
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
-       //<>//
+       //<>// //<>//
       level.addEnemy(deathBlock);
-      level.addEnemy(nme);
+      level.addEnemy(nme); //<>//
+      
+      return level;
+    }
+    case 4: {
+      
+      Level level = new Level(100, 400, 600, 400, new Rect(0, 0, 1200, 600), new Background() {
+        PImage mouseBut = loadImage("GFX/rmouse.png");
+         //<>//
+        public void draw() { //<>//
+          textSize(20);
+          text("Level 5: Denied", textStartX, textStartY);
+          text("It's polite to open doors for others, but in this case some rudeness",textStartX, textStartY+textIncrement);
+          text("is in order. Maybe you could use some mouse powers?", textStartX, textStartY + textIncrement *2);
+          
+          mouseBut.resize(30, 40);
+          image(mouseBut, 470, textStartY + textIncrement *2 + 10);
+        }  //<>//
+      }); 
+       //<>//
+      StaticBlock floor   = new StaticBlock(40, 560, 1020, 20);
+      StaticBlock ceiling = new StaticBlock(40, 300, 1020, 20);
+      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280); //<>//
+      StaticBlock rwall   = new StaticBlock(1050, 300, 20, 280);
+      
+      Enemy eminem = new Enemy(800, 400, level);
+      eminem.addFrames(getZombieName());
+
+      level.addStaticBlock(floor); //<>//
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall);
+      level.addStaticBlock(rwall); //<>//
+      
+      level.addEnemy(eminem); //<>//
       
       return level;
     }
@@ -175,11 +206,11 @@ Level loadLevel(int levelNr) { //<>//
     Level level = new Level(100, 400, 600, 40, new Rect(0, 0, 700, 600), new Background() {
         public void draw() { //<>//
           textSize(20); //<>//
-          text("Level 5", textStartX, textStartY-100); //<>//,
+          text("Level 6 : ", textStartX, textStartY-100); //<>//,
           text("Some rooms are partially in ruin" ,textStartX, textStartY+textIncrement-100);
           text("and curiously look like a puzzle",textStartX, textStartY+textIncrement*2-100);
-        }
-      }); 
+        } //<>//
+      });  //<>//
       
       StaticBlock floor = new StaticBlock(40, 560, 700, 20);
       StaticBlock floor1 = new StaticBlock(40, 360, 300, 20); //<>//
@@ -187,7 +218,7 @@ Level loadLevel(int levelNr) { //<>//
       StaticBlock ceiling = new StaticBlock(40, 10, 700, 20); //<>//
       StaticBlock lwall = new StaticBlock(40, 10, 20, 570);
       StaticBlock rwall = new StaticBlock(740, 10, 20, 570);
-       //<>//
+       //<>// //<>//
       Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
       deathBlock.statikus = true;
       
@@ -197,68 +228,34 @@ Level loadLevel(int levelNr) { //<>//
       level.addStaticBlock(floor);
       level.addStaticBlock(floor1);
       level.addStaticBlock(floor2); //<>//
-      level.addStaticBlock(ceiling);
+      level.addStaticBlock(ceiling); //<>//
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
       
       level.addEnemy(deathBlock);
-      level.addEnemy(nme);
+      level.addEnemy(nme); //<>//
       
       return level;
     }
+
     case 6: {
-    Level level = new Level(100, 50, 600, 400, new Rect(0, 0, 700, 600), new Background() {
+        Level level = new Level(100, 240, 1100, 400, new Rect(0, 0, 1700, 600), new Background() {
         public void draw() {
           textSize(20); //<>//
-          text("Mathewializer: Level 6", 300, 200); //<>//
-          text("Some even have closed off regions",textStartX,250);
-          text("without any meaning",textStartX,250+textIncrement);
-        }
-      }); 
-      
-      StaticBlock floor = new StaticBlock(40, 560, 700, 20);
-      StaticBlock floor2 = new StaticBlock(40, 200, 510, 20);
-      StaticBlock ceiling = new StaticBlock(40, 10, 700, 20); //<>//
-      StaticBlock wall = new StaticBlock(530, 220, 20, 340);
-      StaticBlock lwall = new StaticBlock(40, 10, 20, 570);
-      StaticBlock rwall = new StaticBlock(740, 10, 20, 570);
-      
-      Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
-      deathBlock.statikus = true;
-      
-      Enemy nme = new Enemy(600, 50, level);
-      nme.addFrames("zombi1");
-       //<>//
-      level.addStaticBlock(floor);
-      level.addStaticBlock(floor2);
-      level.addStaticBlock(wall);
-      level.addStaticBlock(ceiling);
-      level.addStaticBlock(lwall); //<>//
-      level.addStaticBlock(rwall);
-      
-      level.addEnemy(deathBlock);
-      level.addEnemy(nme);
-      
-      return level;
-    }
-    case 7: {
-    Level level = new Level(100, 340, 1100, 400, new Rect(0, 0, 1700, 600), new Background() {
-        public void draw() {
-          textSize(20); //<>//
-          text("Mathewializer: Level 7", textStartX, textStartY); //<>//
+          text("Level 7", textStartX, textStartY); //<>//
           text("But what do they eat?",textStartX, textStartY+textIncrement);
-          text("It can't just be the few people who wander in",textStartX, textStartY+textIncrement*2);
-        }
+          text("It can't just be the few people who wander in",textStartX, textStartY+textIncrement*2); //<>//
+        } //<>//
       }); 
       
       StaticBlock floor1 = new StaticBlock(40, 560, 1220, 20); //<>//
       //StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
       StaticBlock ceiling = new StaticBlock(40, 50, 1220, 20);
-      StaticBlock lwall = new StaticBlock(40, 50, 20, 530); //<>//
-      StaticBlock rwall = new StaticBlock(1260, 50, 20, 530); //<>//
+      StaticBlock lwall = new StaticBlock(40, 50, 20, 530); //<>// //<>//
+      StaticBlock rwall = new StaticBlock(1260, 50, 20, 530); //<>// //<>//
       
-      for (int i=0;i<9;i++){
-        Enemy nme = new Enemy(350+i*100, 400, level);
+      for (int i=0;i<8;i++){ //<>//
+        Enemy nme = new Enemy(400+i*100, 400, level); //<>//
         nme.addFrames(getZombieName());
         level.addEnemy(nme);
       }
@@ -269,30 +266,93 @@ Level loadLevel(int levelNr) { //<>//
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
       
+       //<>//
+      return level;
+    }
+
+    case 7: {
+    Level level = new Level(760, 400, 100, 400, new Rect(0, 0, 1700, 600), new Background() {
+        public void draw() {
+          textSize(20); //<>//
+          text("Level 8", textStartX, textStartY); //<>//
+          text("Sometimes the curious are rewarded",textStartX, textStartY+textIncrement); //<>//
+        } //<>//
+      }); 
+      
+      StaticBlock floor1 = new StaticBlock(40, 560, 1520, 20); //<>//
+      //StaticBlock floor2 = new StaticBlock(900, 560, 360, 20); //<>//
+      StaticBlock ceiling = new StaticBlock(40, 50, 1520, 20);
+      StaticBlock lwall = new StaticBlock(40, 50, 20, 530); //<>//
+      StaticBlock rwall = new StaticBlock(1560, 50, 20, 530); //<>// //<>//
+      
+      for (int i=0;i<14;i++){
+        if (i>=4 && i<=9)
+          continue;
+        Enemy nme = new Enemy(100+i*100, 400, level);
+        nme.addFrames(getZombieName());
+        level.addEnemy(nme);
+      }
+      
+      level.addStaticBlock(floor1); //<>//
+      //level.addStaticBlock(floor2);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall); //<>//
+      level.addStaticBlock(rwall);
+       //<>//
       
       return level;
     }
     case 8: {
-    Level level = new Level(100, 50, 600, 400, new Rect(0, 0, 700, 600), new Background() {
+    Level level = new Level(700, 1500, 100, 400, new Rect(0, 0, 1000, 2600), new Background() {
         public void draw() {
           textSize(20); //<>//
-          text("Mathewializer: Level 7", textStartX, textStartY); //<>//
-          text("Can it?",textStartX, textStartY+textIncrement);
+          text("Level 9", textStartX+100, textStartY+1500); //<>//
+          text("Once in a while",textStartX+100, textStartY-textIncrement*3+1500);
+          text("One might rise from the depths of hell",textStartX+100, textStartY-textIncrement*6+1500);
         }
       }); 
       
-      StaticBlock floor = new StaticBlock(40, 560, 700, 20);
-      StaticBlock floor2 = new StaticBlock(40, 200, 510, 20);
-      StaticBlock ceiling = new StaticBlock(40, 10, 700, 20); //<>//
-      StaticBlock wall = new StaticBlock(530, 220, 20, 340);
-      StaticBlock lwall = new StaticBlock(40, 10, 20, 570);
-      StaticBlock rwall = new StaticBlock(740, 10, 20, 570);
+      StaticBlock floor1 = new StaticBlock(40, 2560, 920, 20); //<>//
+      StaticBlock floor2 = new StaticBlock(40, 560, 360, 20); //<>//
+      StaticBlock ceiling = new StaticBlock(40, 50, 1520, 20);
+      StaticBlock lwall = new StaticBlock(40, 50, 20, 2530); //<>//
+      StaticBlock rwall = new StaticBlock(960, 50, 20, 2530); //<>//
       
-      Enemy deathBlock = new Enemy(0, 800, 800, 20, level);
-      deathBlock.statikus = true;
+      for (int i=0;i<9;i++){
+        Enemy nme = new Enemy(80+i*100, 2400, level);
+        nme.addFrames(getZombieName());
+        level.addEnemy(nme);
+      }
       
-      Enemy nme = new Enemy(600, 50, level);
-      nme.addFrames("zombi1");
+      level.addStaticBlock(floor1);
+      level.addStaticBlock(floor2);
+      level.addStaticBlock(ceiling);
+      level.addStaticBlock(lwall); //<>//
+      level.addStaticBlock(rwall);
+      
+      
+      return level;
+    }
+    
+    case 9: {
+    Level level = new Level(100, 550, 600, 900, new Rect(0, 0, 700, 1100), new Background() {
+        public void draw() {
+          textSize(20);
+          text("Level 10", 300, 200);
+          text("Some even have closed off regions",textStartX,250); //<>//
+          text("without any meaning",textStartX,250+textIncrement); //<>// //<>// //<>//
+        }
+      }); 
+      
+      StaticBlock floor = new StaticBlock(40, 1060, 700, 20);
+      StaticBlock floor2 = new StaticBlock(40, 700, 510, 20);
+      StaticBlock ceiling = new StaticBlock(40, 510, 700, 20); //<>//
+      StaticBlock wall = new StaticBlock(530, 720, 20, 340);
+      StaticBlock lwall = new StaticBlock(40, 510, 20, 570);
+      StaticBlock rwall = new StaticBlock(740, 510, 20, 570);
+            
+      Enemy nme = new Enemy(600, 550, level);
+      nme.addFrames(getZombieName());
        //<>//
       level.addStaticBlock(floor);
       level.addStaticBlock(floor2);
@@ -301,41 +361,7 @@ Level loadLevel(int levelNr) { //<>//
       level.addStaticBlock(lwall); //<>//
       level.addStaticBlock(rwall);
       
-      level.addEnemy(deathBlock);
       level.addEnemy(nme);
-      
-      return level;
-    }
-    case 4: {
-      
-      Level level = new Level(100, 400, 600, 400, new Rect(0, 0, 1200, 600), new Background() {
-        PImage mouseBut = loadImage("GFX/rmouse.png");
-        
-        public void draw() {
-          textSize(20);
-          text("Level ?: Denied", textStartX, textStartY);
-          text("It's polite to open doors for others, but in this case some rudeness",textStartX, textStartY+textIncrement);
-          text("is in order. Maybe you could use some mouse powers?", textStartX, textStartY + textIncrement *2);
-          
-          mouseBut.resize(30, 40);
-          image(mouseBut, 470, textStartY + textIncrement *2 + 10);
-        } 
-      }); 
-      
-      StaticBlock floor   = new StaticBlock(40, 560, 1020, 20);
-      StaticBlock ceiling = new StaticBlock(40, 300, 1020, 20);
-      StaticBlock lwall   = new StaticBlock(40, 300, 20, 280);
-      StaticBlock rwall   = new StaticBlock(1050, 300, 20, 280);
-      
-      Enemy eminem = new Enemy(800, 400, level);
-      eminem.addFrames(getZombieName());
-
-      level.addStaticBlock(floor);
-      level.addStaticBlock(ceiling);
-      level.addStaticBlock(lwall);
-      level.addStaticBlock(rwall);
-      
-      level.addEnemy(eminem);
       
       return level;
     }
@@ -379,21 +405,21 @@ float x_offset = 0;
 float y_offset = 0;
 
 void draw() {
-  //background(0); 
-   bgSub = bgImage.get((int)x_offset+200,-(int)y_offset+500,800,600);
+   background(0); 
+   bgSub = bgImage.get((int)x_offset+200,(int)y_offset+500,800,600);
    image(bgSub,0,0);
   
    currentLevel.update(direction, jump);
    
    x_offset = saturate(currentLevel.player.x , currentLevel.dimension.w-width/2,width/2 ) - width/2;
-   y_offset = saturate(-currentLevel.player.y + height/2, currentLevel.dimension.y, currentLevel.dimension.h);
+   y_offset = saturate(currentLevel.player.y , currentLevel.dimension.h-height/2,height/2 ) - height/2;
   
-   translate(-x_offset, y_offset);
+   translate(-x_offset, -y_offset);
 
   
    currentLevel.draw();
    
-   translate(x_offset, -y_offset);
+   translate(x_offset, y_offset);
    
    fill(255);
      rect(mouseX, mouseY, 5, 5);
@@ -416,11 +442,11 @@ void draw() {
 
 void mousePressed() {
   if (mouseButton == LEFT && currentLevel.mouseBlock == null) {
-    currentLevel.createMouseBlock(true, mouseX + x_offset, mouseY - y_offset);
+    currentLevel.createMouseBlock(true, mouseX + x_offset, mouseY + y_offset);
   }
   
   if (mouseButton == RIGHT && currentLevel.mouseBlock == null) {
-    currentLevel.createMouseBlock(false, mouseX + x_offset, mouseY - y_offset);
+    currentLevel.createMouseBlock(false, mouseX + x_offset, mouseY + y_offset);
   }
 }
 
