@@ -41,6 +41,9 @@ public class Player extends DynamicBlock {
            && level.door.y <= playerVerticalMidPoint   && playerVerticalMidPoint   <= level.door.y + level.door.h) {
         levelNr++;
         
+        winSound.rewind();
+        winSound.play();
+        
         currentLevel = loadLevel(levelNr);
         if (currentLevel == null){
           levelNr=0;
